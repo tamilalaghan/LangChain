@@ -2,7 +2,20 @@ from langchain_openai import OpenAI
 import os
 
 
-llm = OpenAI()
-prompt = input("Enter the query would you like to pass to OpenAI ? : ")
-if( len(prompt) > 5 ):
-    print( llm.invoke(prompt))
+class OpenAIConnect:
+    def __init__(self):
+        pass
+    def askgpt(self):
+        prompt = input("Ask your question : ")
+        if(len(prompt) > 5):
+            llm = OpenAI()
+            response = llm.invoke(prompt)
+            print(f"Response from AI : {response.strip()}")
+        else:
+            self.askgpt()
+
+gpt = OpenAIConnect()
+gpt.askgpt()
+        
+
+
